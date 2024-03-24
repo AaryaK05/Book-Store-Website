@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+    <div>
+       
+            <% if(orders.length!=0){%>
+                <% orders.forEach(order=>{%>
+                    <b>Order ID:</b><%= order._id %>
+                    <b>Order Date:</b><%=order.Order_date%>
+                
+                    <b>Order Items:</b>
+                    <br>
+                        <% const items=order.Order_items %>
+                        <% items.forEach(item=>{%>
+                            Product ID:<%= item.product_id %>
+                            Product Title:<%= item.product_title %>
+                            Product Author:<%= item.product_author %>
+                            Product Price:<%= item.product_price %>
+                            Quantity:<%= item.quantity %>
+                            <br>
+                        <%}) %>
+                    <b>Order Total:</b><%=order.Order_total %>
+                    <b>Order Status:</b><b><%=order.Order_status %></b>
+                    
+                    <hr>
+                <%}) %>
+            <%}else{%>
+                No Orders Yet!
+            <%} %>
+
+        
+
+    </div>
+    
+    
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Bookez</title>
+</head>
+<body>
+  
+  <%- include("partials/header.ejs") %>    
+  <% if(locals.msg){ %>
+    <div id="add_to_cart_msg">
+      
+        <%=msg %>
+      
+      
+        <button onclick="CloseMsg()" id="closemsg">X</button>
+      
+    </div>
+    <%}%>
+  
+  <div class="home-text">
+    <p>Browse the best written books to offer!</p>
+  </div>
+  
+<!-- LIST ALL COURSES-->
+<div class="center-page">
+    <div class="">
+       <input type="text" placeholder="Search for" class="form-control">
+    </div>
+    <br>
+    <!-- COURSES LIST-->
+    <div class="courses-list">
+      <% products.forEach(product => { %>  
+        <div class="card" style="width: 12rem;">
+          <img src="images/<%= product.Book_Title %>.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title"><%= product.Book_Title %></h5>
+            <p class="card-text"><%= product.Book_Author %></p>
+            <!-- <a href="/<%= product.Book_Title %>" class="btn btn-primary" target="_blank">Details</a> -->
+            <form method="post" action="/add_cart">
+              <input type="hidden" name="product_id" value="<%= product.Book_id %>">
+              <input type="hidden" name="product_Title" value="<%= product.Book_Title %>">
+              <input type="hidden" name="product_Author" value="<%= product.Book_Author %>">
+              <input type="hidden" name="product_Price" value="<%= product.Book_Price %>">
+              <input type="submit" class="btn btn-danger" value="Add to cart">
+            </form>
+          </div>
+        </div>
+        <%}); %>
+        
+    </div>
+</div>
+
+
+<%- include("partials/footer.ejs") %>    
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  function CloseMsg(){
+    const msg=document.getElementById("add_to_cart_msg");
+    console.log(msg.classList);
+    msg.classList.add("hidden");
+  }
+</script>
+</body>
+</html>

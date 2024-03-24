@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title></title>
+</head>
+<body>
+    <%- include("partials/header.ejs") %>  
+
+    <div class="center-page">
+    <div class="course-align">
+        <div class="course-header">
+            <div>
+                <img src="<%= imageurl %>">
+            </div>
+            <div class="course-main">
+                <div class="course-title"><%= title %></div>
+                <div class="course-subtitle"><%= subtitle %></div>
+            </div>
+        </div>
+        <div style="text-align: justify;">
+           <%= description %>
+        </div>
+        <div style="text-align: right;">
+            Price:
+            <%= price %>
+        </div>
+        
+        <div style="text-align: right;">
+            <a href="#" class="btn btn-danger">Buy</a>
+        </div>
+        
+    </div>
+    </div>
+   
+
+    <%- include("partials/footer.ejs") %>   
+</body>
+</html>

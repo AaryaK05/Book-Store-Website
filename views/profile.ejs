@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Profile</title>
+    
+</head>
+
+<body>
+    <%- include("partials/header.ejs") %>
+
+        <div class="profile_page">
+
+            <div class="profile_actions">
+                <a href="/account" target="description">Account</a>
+                <hr>
+                <a href="/orders" onclick="resizeWindow()" target="description">Orders</a>
+                <hr>
+                <a href="/Logout">Logout</a>
+            </div>
+            
+                <iframe id="myiframe" name="description" width="100%"></iframe>
+
+            
+           
+        </div>
+
+    <%- include("partials/footer.ejs") %>
+
+    <script>
+        function resizeWindow(){
+            const page=document.getElementsByClassName("profile_page");
+            const frame=document.getElementById("myiframe");
+            console.log(frame);
+            console.log(page[0]);
+            const hit=150*6;
+            
+            frame.style.height=hit+"px"
+
+        }
+    </script>
+</body>
+
+</html>

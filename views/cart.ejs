@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">        
+    <title></title>
+</head>
+
+<body>
+    <%- include("partials/header.ejs") %>
+
+        <div class="center-page">
+            <h6 style="text-align: center;">Cart</h6>
+
+            <div class="cart">
+                <% if(cart.length!=0){ %>
+                    <% cart.forEach(book=> { %>
+                    <div class="cart_item">
+                        <div class="cart_item_inside">
+                            <div>
+                                <img src="images/<%= book.product_title %>.png">
+                            </div>
+                            <div>
+                                <b>Name:</b><br>
+                                <%= book.product_title %>
+                                <br>
+                                <b>Price:</b><br>
+                                <%= book.product_price %>
+                            </div>
+                        </div>
+                        <div class="cart_functionality">
+                            <div>
+                                <button class="qty_button">+</button>
+                                <%= book.quantity %>
+                                <button class="qty_button">-</button>
+                            </div>
+                            <form method="post" action="/remove-item">
+                                <input type="hidden" name="product_id" value="<%= book.product_id %>">
+                                <input type="hidden" name="product_Price" value="<%= book.product_price %>">
+                                <input type="submit" class="btn btn-danger" value="Remove Item">
+                            </form>
+                        </div>
+                    </div>
+                    <%}); %>
+                    <div style="text-align: center;background-color:rgb(197, 197, 197);line-height: 40px;">
+                        <div>
+                            <b>Total:</b><%= total %>
+                            
+                        </div>
+                    </div>
+                    <div class="buttons-align">
+                        <a href="/home"><input type="submit" value="Contine Shopping"></a>
+                        <form method="post" action="/placeorder">
+                            <input type="hidden" name="Order_total" value="<%= total %>">
+                            <input type="submit" value="Place Order">
+                        </form>
+                    </div>                  
+                    <% }else{%>
+                        <p style="text-align: center;">Cart is Empty!</p>
+                    <%} %>
+
+                    
+                </div>
+
+        </div>
+
+        <%- include("partials/footer.ejs") %>
+</body>
+
+</html>

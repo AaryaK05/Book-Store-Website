@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+
+    <div class="account">
+
+      <div>
+        <div>
+          Username:
+        </div>
+        <div>
+          <% if(uname){ %>
+            <input type="text" value="<%= uname %>" readonly>
+            <% } %>
+          </div> 
+      </div>
+
+      <div>
+        <div>
+          Email: 
+        </div>
+        <div>
+          <% if(email){ %>
+            <input type="text" value="<%= email %>" readonly>
+            <% } %>
+          </div>
+      </div>
+
+    </div>
+
+  </body>
+</html>
